@@ -7,7 +7,19 @@ export const units = (field) => {
         return "deg"
     } else if (field === "Wind Speed") {
         return "m/s"
-    } else {
+    } else if (field === "Relative Humidity") {
         return "%"
+    } else if (field.includes("Voltage")) {
+        return "V"
+    } else if (field.includes("Current")) {
+        return "A"
+    } else if (field === "Generator Frequency") {
+        return "Hz"
+    } else if (field === "Power Factor") {
+        return ""
+    } else if (field === "Active Power") {
+        return "kW"
+    } else if (field === "Reactive Power") {
+        return "kVAR"
     }
 }
