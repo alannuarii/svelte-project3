@@ -15,7 +15,7 @@
 	<div class="container-fluid">
 		<!-- svelte-ignore a11y-invalid-attribute -->
 		<a class="navbar-brand text-light ms-3 d-flex align-items-center" href="/"
-			>Dashboard PLTD Tahuna</a
+			>Dashboard ULPLTD Tahuna</a
 		>
 		<div class="ms-auto py-2 px-4">
 			{#if freqData.length > 2 && freqData[2]}
