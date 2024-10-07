@@ -30,6 +30,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@influxdata/influxdb-client": "^1.35.0"
+		"@influxdata/influxdb-client": "^1.35.0",
+		"jwt-decode": "^4.0.0"
 	}
 }

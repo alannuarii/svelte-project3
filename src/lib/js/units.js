@@ -1,5 +1,5 @@
 export const units = (field) => {
-    if (field === "External Temperature") {
+    if (field === "External Temperature" || field === "Air Temperature") {
         return "degC"
     } else if (field === "Global Irradiance") {
         return "W/m2"

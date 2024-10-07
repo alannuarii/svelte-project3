@@ -1,10 +1,15 @@
 <script>
 	import { onMount } from 'svelte';
-	import { units } from '../../lib/js/units';
+	import Pltd from '../../lib/components/PLTD.svelte';
+	import Plts from '../../lib/components/PLTS.svelte';
 
 	let weatherData = [];
 	let dg6Data = [];
 	let dg7Data = [];
+	let lvsw1Data = [];
+	let lvsw2Data = [];
+	let it1Data = [];
+	let it2Data = [];
 	let error = null;
 
 	const fetchData = async () => {
@@ -13,9 +18,21 @@
 			const weatherRes = await fetch('/api/weather-station');
 			const dg6Res = await fetch('/api/dg6');
 			const dg7Res = await fetch('/api/dg7');
+			const lvsw1Res = await fetch('/api/lvsw1');
+			const lvsw2Res = await fetch('/api/lvsw2');
+			const it1Res = await fetch('/api/it1');
+			const it2Res = await fetch('/api/it2');
 
-			// Check if both requests are successful
-			if (!weatherRes.ok || !dg6Res.ok || !dg7Res.ok) {
+			// Check if both requests are primaryful
+			if (
+				!weatherRes.ok ||
+				!dg6Res.ok ||
+				!dg7Res.ok ||
+				!lvsw1Res.ok ||
+				!lvsw2Res.ok ||
+				!it1Res.ok ||
+				!it2Res.ok
+			) {
 				throw new Error('Failed to fetch data');
 			}
 
@@ -23,11 +40,19 @@
 			const weather = await weatherRes.json();
 			const dg6 = await dg6Res.json();
 			const dg7 = await dg7Res.json();
+			const lvsw1 = await lvsw1Res.json();
+			const lvsw2 = await lvsw2Res.json();
+			const it1 = await it1Res.json();
+			const it2 = await it2Res.json();
 
 			// Update the weatherData and dg7Data arrays
 			weatherData = weather;
 			dg6Data = dg6;
 			dg7Data = dg7;
+			lvsw1Data = lvsw1;
+			lvsw2Data = lvsw2;
+			it1Data = it1;
+			it2Data = it2;
 		} catch (err) {
 			error = err.message;
 		}
@@ -40,38 +65,19 @@
 
 		return () => clearInterval(interval);
 	});
-
-	// Debugging output for both datasets
-	$: console.log('Weather Data:', weatherData);
-	$: console.log('DG7 Data:', dg7Data);
 </script>
 
-<div>
+<div class="container-fluid">
 	{#if error}
 		<p>Error: {error}</p>
 	{:else}
-		<!-- Display weather station data -->
-		<h3>Weather Station Data</h3>
-		<ul>
-			{#each weatherData as item}
-				<li>{item._field} = {(item._value).toFixed(2)} {units(item._field)}</li>
-			{/each}
-		</ul>
-
-		<!-- Display dg6 data -->
-		<h3>DG6 Data</h3>
-		<ul>
-			{#each dg6Data as item}
-				<li>{item._field} = {(item._value).toFixed(2)} {units(item._field)}</li>
-			{/each}
-		</ul>
-
-		<!-- Display dg7 data -->
-		<h3>DG7 Data</h3>
-		<ul>
-			{#each dg7Data as item}
-				<li>{item._field} = {(item._value).toFixed(2)} {units(item._field)}</li>
-			{/each}
-		</ul>
+		<div class="row">
+			<div class="col-6">
+				<Pltd {dg6Data} {dg7Data} />
+			</div>
+			<div class="col-6">
+				<Plts {weatherData} {lvsw1Data} {lvsw2Data} {it1Data} {it2Data} />
+			</div>
+		</div>
 	{/if}
 </div>

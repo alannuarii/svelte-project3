@@ -7,12 +7,12 @@ const bucket = BUCKET
 const url = URL
 
 const query = `
-      from(bucket: "${bucket}")
-        |> range(start: -1m)
-        |> filter(fn: (r) => r._measurement == "weather_station")
-        |> filter(fn: (r) => r._field == "Air Temperature" or r._field == "External Temperature" or r._field == "Global Irradiance" or r._field == "Wind Direction" or r._field == "Wind Speed" or r._field == "Relative Humidity")
-        |> last()
-    `;
+from(bucket: "${bucket}")
+  |> range(start: -1m)
+  |> filter(fn: (r) => r._measurement == "IT2")
+  |> filter(fn: (r) => r._field == "Active Power" or r._field == "Reactive Power" or r._field == "Voltage" or r._field == "Current" or r._field == "Power Factor" or r._field == "Frequency")
+  |> last()
+`;
 
 export const GET = async () => {
   try {
@@ -25,7 +25,7 @@ export const GET = async () => {
       }
     });
   } catch (error) {
-    console.error('Caught error:', error);
+    console.error('Caught error:', error); 
     return new Response(JSON.stringify({ error: error.message }), { status: 500 });
   }
 }
