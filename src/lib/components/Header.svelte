@@ -8,7 +8,7 @@
 
 	export let freqData;
 
-	const isFreqOutOfRange = (frequency) => frequency > 51 || frequency < 49;
+	const isFreqOutOfRange = (frequency) => frequency > 50.5 || frequency < 49.5;
 </script>
 
 <nav class="navbar bg-dark shadow">

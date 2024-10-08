@@ -65,6 +65,8 @@
 
 		return () => clearInterval(interval);
 	});
+
+	$: console.log(dg7Data)
 </script>
 
 <div class="container-fluid">

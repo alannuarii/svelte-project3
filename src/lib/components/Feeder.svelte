@@ -2,9 +2,11 @@
 	import { units } from '../js/units';
 	export let lvswData;
 	export let feeder;
+
+	const isDataAvailable = (data) => data && data.length > 0;
 </script>
 
-{#if lvswData.length > 0}
+{#if isDataAvailable(lvswData)}
 	<div class="card mb-2 border-dark">
 		<h5 class="card-header text-center">Feeder #{feeder}</h5>
 		<div class="my-2 d-flex justify-content-center align-items-center">
@@ -13,7 +15,9 @@
 					{#if ![1, 2, 3].includes(i)}
 						<li class="list-group-item d-flex flex-column">
 							<div class="title d-flex justify-content-center align-items-center">
-								<h5 class="title d-flex align-items-center">{item._field}</h5>
+								<a href="/chart/{item._measurement}-{item._field}" class="title d-flex align-items-center text-dark"
+									>{item._field}</a
+								>
 							</div>
 							<hr />
 							<div class="value d-flex justify-content-center align-items-center">
@@ -41,11 +45,21 @@
 	.title {
 		height: 25px;
 	}
-	.title h5 {
+	/* .title h5 {
 		font-size: 13px;
 		margin-bottom: -7px;
-	}
+	} */
 	.value {
 		margin-top: -10px;
+	}
+	a {
+		font-size: 13px;
+		margin-bottom: -7px;
+		cursor: pointer;
+		text-decoration: none;
+		font-weight: 500;
+	}
+	a:hover {
+		color: #0d6efd !important;
 	}
 </style>

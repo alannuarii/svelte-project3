@@ -2,9 +2,11 @@
 	import { units } from '../js/units';
 	export let itData;
 	export let feeder;
+
+	const isDataAvailable = (data) => data && data.length > 0;
 </script>
 
-{#if itData.length > 0}
+{#if isDataAvailable(itData)}
 	<div class="card mb-2 border-dark">
 		<h5 class="card-header text-center">BSS Feeder #{feeder}</h5>
 		<div class="my-2 d-flex justify-content-center align-items-center">
@@ -13,7 +15,9 @@
 					{#if ![1, 2, 3, 4].includes(i)}
 						<li class="list-group-item d-flex flex-column">
 							<div class="title d-flex justify-content-center align-items-center">
-								<h5 class="title d-flex align-items-center">{item._field}</h5>
+								<a href="/chart/{item._measurement}-{item._field}" class="title d-flex align-items-center text-dark"
+									>{item._field}</a
+								>
 							</div>
 							<hr />
 							<div class="value d-flex justify-content-center align-items-center">
@@ -29,9 +33,9 @@
 					</div>
 					<hr />
 					<div class="value d-flex justify-content-center align-items-center">
-						{#if itData[0]?. _value > 0}
+						{#if itData[0]?._value > 0}
 							<h5 class="card-title me-2 text-danger status">Discharging</h5>
-						{:else if itData[0]?. _value < 0}
+						{:else if itData[0]?._value < 0}
 							<h5 class="card-title me-2 text-primary status">Charging</h5>
 						{:else}
 							<h5 class="card-title me-2">-</h5>
@@ -63,7 +67,17 @@
 	.value {
 		margin-top: -10px;
 	}
-	.status{
+	.status {
 		font-weight: 700;
+	}
+	a {
+		font-size: 13px;
+		margin-bottom: -7px;
+		cursor: pointer;
+		text-decoration: none;
+		font-weight: 500;
+	}
+	a:hover {
+		color: #0d6efd !important;
 	}
 </style>
