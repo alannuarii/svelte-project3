@@ -1,16 +1,8 @@
 <script>
-	import { units } from '../js/units';
 	import Engine from './Engine.svelte';
 
 	export let dg6Data;
 	export let dg7Data;
-
-	const isDataAvailable = (data) => data && data.length > 0;
-
-	// Fungsi untuk mengambil data dari array berdasarkan nama field
-	const getDataByField = (data, field) => {
-		return data.find((item) => item._field === field) || null;
-	};
 </script>
 
 <section class="my-2">

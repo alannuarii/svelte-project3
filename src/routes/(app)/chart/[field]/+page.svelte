@@ -19,11 +19,16 @@
 		try {
 			// Pastikan field memiliki nilai sebelum melakukan fetch
 			if (field) {
+				let apiUrl = '';
 				// Tentukan URL berdasarkan field yang dipilih
-				const apiUrl =
-					field.includes('Voltage') || field.includes('Current')
-						? `/api/chart3?timeframe=${timeframe}&measurement=${measurement}&field=${field}`
-						: `/api/chart?timeframe=${timeframe}&measurement=${measurement}&field=${field}`;
+
+				if (field.includes('Generator Voltage') || field.includes('Generator Current')) {
+					apiUrl = `/api/chart3?timeframe=${timeframe}&measurement=${measurement}&field=${field}`;
+				} else if (field.includes('Total')) {
+					apiUrl = `/api/chartsum?timeframe=${timeframe}&measurement=${measurement}&field=${field}`;
+				} else {
+					apiUrl = `/api/chart?timeframe=${timeframe}&measurement=${measurement}&field=${field}`;
+				}
 
 				const response = await fetch(apiUrl);
 				if (!response.ok) throw new Error('Gagal mengambil data dari server');
@@ -65,11 +70,13 @@
 					showlegend: true, // Tampilkan legenda untuk membedakan setiap field
 					annotations: [
 						{
-							x: new Date(groupedData[Object.keys(groupedData)[0]].slice(-1)[0]._time), // Waktu terakhir
-							y: lastValue, // Nilai terakhir
+							x: lastValue
+								? new Date(groupedData[Object.keys(groupedData)[0]].slice(-1)[0]._time)
+								: new Date(), // Waktu terakhir
+							y: lastValue !== null ? lastValue : 0, // Nilai terakhir
 							xref: 'x',
 							yref: 'y',
-							text: '<b>' + `${lastValue.toFixed(2)}` + '<b>', // Teks anotasi
+							text: '<b>' + `${lastValue ? lastValue.toFixed(2) : 'N/A'}` + '<b>', // Teks anotasi
 							showarrow: true,
 							arrowhead: 2,
 							ax: 0,
@@ -101,15 +108,12 @@
 
 	// Fungsi untuk mengurai URL path menjadi measurement dan field
 	const parseUrlPath = (path) => {
-		// Contoh path: /chart/dg7-Active%20Power
 		const segments = path.split('/');
 
 		// Pastikan path memiliki segmen yang sesuai ("/chart/measurement-field")
 		if (segments.length >= 3) {
-			// Ambil measurement dan field dari segmen terakhir, misalnya "dg7-Active Power"
 			const [measurementSegment, fieldSegment] = segments[2].split('-');
 
-			// Decode URL agar menangani karakter URL seperti "%20" untuk spasi
 			measurement = decodeURIComponent(measurementSegment);
 			field = decodeURIComponent(fieldSegment);
 		} else {
@@ -120,16 +124,12 @@
 	// Fungsi yang dijalankan pada saat komponen di-mount
 	onMount(async () => {
 		if (isClient) {
-			// Import `Plotly` hanya jika kode berjalan di klien
 			Plotly = await import('plotly.js-dist');
 
-			// Tangkap path dari URL saat ini
 			urlParams = window.location.pathname;
 
-			// Uraikan URL path untuk mendapatkan measurement dan field
 			parseUrlPath(urlParams);
 
-			// Ambil data pertama kali dan set interval untuk update setiap 10 detik
 			if (measurement && field) {
 				await fetchData();
 				interval = setInterval(fetchData, 10000);

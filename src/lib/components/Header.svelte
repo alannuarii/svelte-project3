@@ -19,12 +19,13 @@
 		>
 		<div class="ms-auto py-2 px-4">
 			{#if freqData.length > 2 && freqData[2]}
-				<h1
+				<a
+					href="/chart/{freqData[2]._measurement}-{freqData[2]._field}"
 					class:out-of-range={isFreqOutOfRange(freqData[2]._value)}
 					class="me-1 text-light frequency-text"
 				>
 					{freqData[2]?._value?.toFixed(2) ?? '00.00'} Hz
-				</h1>
+				</a>
 			{:else}
 				<h1 class="text-light">00.00 Hz</h1>
 			{/if}
@@ -93,9 +94,15 @@
 	.user:hover {
 		color: #43a6a3 !important;
 	}
-	h1 {
+	.frequency-text {
 		font-size: 35px;
 		font-weight: 700;
+		margin-bottom: -7px;
+		cursor: pointer;
+		text-decoration: none;
+	}
+	.frequency-text:hover {
+		color: #0d6efd !important;
 	}
 	/* Style dasar untuk teks */
 	.frequency-text {

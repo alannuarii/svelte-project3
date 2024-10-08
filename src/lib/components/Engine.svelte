@@ -29,7 +29,7 @@
 
 		<!-- Voltage Generator -->
 		<div class="card mx-4 mb-2 border-dark">
-			<a href="/chart/{dgData[5]._measurement}-{(dgData[1]._field).split(" L")[0]}" class="card-header text-center">Voltage Generator</a>
+			<a href="/chart/{dgData[5]._measurement}-{(dgData[5]._field).split(" L")[0]}" class="card-header text-center">Voltage Generator</a>
 			<div class="my-2 d-flex justify-content-center align-items-center">
 				<ul class="list-group list-group-horizontal">
 					{#each dgData as item, i}

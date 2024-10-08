@@ -18,7 +18,7 @@ export const GET = async ({ url }) => {
   let query = '';
 
   // Pastikan parameter `field` tidak null atau undefined sebelum menggunakan `includes`
-  if (field && field.includes("Voltage")) {
+  if (field && field.includes("Generator Voltage") || field.includes("Generator Current")) {
     query = `
     from(bucket: "${bucket}")
       |> range(start: -${timeframe})

@@ -32,7 +32,7 @@
 				<div class="col-6">
 					{#if isDataAvailable(lvsw1Data || lvsw2Data)}
 						<div class="card mb-2 border-dark">
-							<a href="/chart/apa" class="card-header text-center">Total Active Power</a>
+							<a href="/chart/{lvsw1Data[0]._measurement}-Total {lvsw1Data[0]._field}" class="card-header text-center">Total Active Power</a>
 							<div class="my-2 d-flex justify-content-center align-items-center">
 								<h5 class="card-title me-2">
 									{(lvsw1Data[0]._value + lvsw2Data[0]._value).toFixed(2)}
@@ -49,7 +49,7 @@
 				<div class="col-6">
 					{#if isDataAvailable(lvsw1Data || lvsw2Data)}
 						<div class="card mb-2 border-dark">
-							<a href="/chart/apa" class="card-header text-center">Total Reactive Power</a>
+							<a href="/chart/{lvsw1Data[4]._measurement}-{lvsw1Data[4]._field}" class="card-header text-center">Total Reactive Power</a>
 							<div class="my-2 d-flex justify-content-center align-items-center">
 								<h5 class="card-title me-2">
 									{(lvsw1Data[4]._value + lvsw2Data[4]._value).toFixed(2)}
