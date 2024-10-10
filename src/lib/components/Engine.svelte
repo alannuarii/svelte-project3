@@ -1,12 +1,13 @@
 <script>
 	import { units } from '../js/units';
 	export let dgData;
+	export let engine;
 
 	const isDataAvailable = (data) => data && data.length > 0;
 </script>
 
 <div class="card border-dark">
-	<h2 class="text-center mt-2">Unit #7</h2>
+	<h2 class="text-center mt-2">Unit #{engine}</h2>
 	<div class="mx-auto mb-3">
 		{#if isDataAvailable(dgData) && dgData[0]._value !== 0}
 			<span class="badge text-bg-success">Operating</span>
@@ -19,7 +20,10 @@
 	{#if isDataAvailable(dgData)}
 		{#each [0, 9, 8] as index}
 			<div class="card mx-4 mb-2 border-dark">
-				<a href="/chart/{dgData[index]._measurement}-{dgData[index]._field}" class="card-header text-center">{dgData[index]._field}</a>
+				<a
+					href="/chart/{dgData[index]._measurement}-{dgData[index]._field}"
+					class="card-header text-center">{dgData[index]._field}</a
+				>
 				<div class="my-2 d-flex justify-content-center align-items-center">
 					<h5 class="card-title me-2">{dgData[index]._value.toFixed(2)}</h5>
 					<span class="unit">{units(dgData[index]._field)}</span>
@@ -29,7 +33,10 @@
 
 		<!-- Voltage Generator -->
 		<div class="card mx-4 mb-2 border-dark">
-			<a href="/chart/{dgData[5]._measurement}-{(dgData[5]._field).split(" L")[0]}" class="card-header text-center">Voltage Generator</a>
+			<a
+				href="/chart/{dgData[5]._measurement}-{dgData[5]._field.split(' L')[0]}"
+				class="card-header text-center">Voltage Generator</a
+			>
 			<div class="my-2 d-flex justify-content-center align-items-center">
 				<ul class="list-group list-group-horizontal">
 					{#each dgData as item, i}
@@ -46,7 +53,10 @@
 
 		<!-- Current Generator -->
 		<div class="card mx-4 mb-2 border-dark">
-			<a href="/chart/{dgData[1]._measurement}-{(dgData[1]._field).split(" L")[0]}" class="card-header text-center">Current Generator</a>
+			<a
+				href="/chart/{dgData[1]._measurement}-{dgData[1]._field.split(' L')[0]}"
+				class="card-header text-center">Current Generator</a
+			>
 			<div class="my-2 d-flex justify-content-center align-items-center">
 				<ul class="list-group list-group-horizontal">
 					{#each dgData as item, i}
@@ -88,10 +98,10 @@
 		padding: 4px;
 		font: inherit;
 		cursor: pointer;
-        text-decoration: none;
-        font-weight: 500;
+		text-decoration: none;
+		font-weight: 500;
 	}
-    a:hover{
-        color: #0d6efd;
-    }
+	a:hover {
+		color: #0d6efd;
+	}
 </style>

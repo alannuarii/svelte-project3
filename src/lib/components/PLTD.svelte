@@ -12,12 +12,12 @@
 			<div class="row m-2">
 				<!-- Card Unit #6 -->
 				<div class="col-6">
-					<Engine dgData={dg6Data} />
+					<Engine dgData={dg6Data} engine={6} />
 				</div>
 
 				<!-- Card Unit #7 -->
 				<div class="col-6">
-					<Engine dgData={dg7Data} />
+					<Engine dgData={dg7Data} engine={7} />
 				</div>
 			</div>
 		</div>
