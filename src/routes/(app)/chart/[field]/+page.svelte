@@ -1,5 +1,6 @@
 <script>
 	import { onMount, onDestroy } from 'svelte';
+	import { units } from '../../../../lib/js/units';
 
 	let chartDiv;
 	let interval;
@@ -59,7 +60,7 @@
 				Plotly.react(chartDiv, trace, {
 					title: '<b>' + `${field} Monitoring` + '</b>',
 					xaxis: { title: 'Time' },
-					yaxis: { title: `${field} (kW)` },
+					yaxis: { title: `${field} (${units(field)})` },
 					margin: { l: 80, r: 50, b: 100, t: 80 }, // Menambahkan padding bawah untuk legend
 					legend: {
 						orientation: 'h', // Legend horizontal
