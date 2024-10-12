@@ -1,5 +1,6 @@
 <script>
 	import Header from '../../lib/components/Header.svelte';
+	import HeaderMob from '../../lib/components/mobile/Header.svelte';
 	import { onMount } from 'svelte';
 
 	let freqData = [];
@@ -37,7 +38,7 @@
 	<meta name="description" content="Dashboard PLTD Tahuna" />
 </svelte:head>
 
-<main>
+<main class="desktop">
 	<div class="position-relative">
 		<div class="header position-absolute top-0 start-50 translate-middle-x">
 			<Header {freqData} />
@@ -48,21 +49,63 @@
 	</div>
 </main>
 
+<main class="mobile">
+	<div class="header position-absolute top-0 start-50 translate-middle-x">
+		<HeaderMob />
+	</div>
+	<div class="content">
+		<slot />
+	</div>
+</main>
+
 <style>
-	main {
+	.desktop {
 		overflow-x: hidden;
 		background-image: url('../../lib/img/bg.jpg');
 		background-size: cover;
 	}
-	.content {
+	.desktop .content {
 		height: 100vh;
 		overflow-x: hidden;
 		overflow-y: auto;
 		padding-top: 85px;
 		/* padding-bottom: 50px; */
 	}
-	.header {
+	.desktop .header {
 		width: 100%;
 		z-index: 1;
+	}
+	.desktop {
+		display: block;
+	}
+
+	.mobile {
+		display: none;
+	}
+
+	/* Mobile specific */
+	@media screen and (max-width: 1000px) {
+		.desktop {
+			display: none;
+		}
+		.mobile {
+			display: block !important;
+		}
+		.mobile {
+			overflow-x: hidden;
+			background-image: url('../../lib/img/bg.jpg');
+			background-size: cover;
+		}
+		.mobile .content {
+			height: 100vh;
+			overflow-x: hidden;
+			overflow-y: auto;
+			padding-top: 60px;
+			/* padding-bottom: 50px; */
+		}
+		.mobile .header {
+			width: 100%;
+			z-index: 1;
+		}
 	}
 </style>

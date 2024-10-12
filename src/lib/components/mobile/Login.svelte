@@ -1,14 +1,10 @@
 <script>
-	import Alert from '../../../lib/components/Alert.svelte';
-	import Login from '../../../lib/components/mobile/Login.svelte';
+	import Alert from '../Alert.svelte';
 
-	export let form;
-
-	const response = form ? form.message : '';
+	export let response;
 </script>
 
-<!-- Desktop version -->
-<section class="desktop">
+<section id="desktop">
 	{#if response}
 		<Alert message={response} color="danger" icon="x-circle" />
 	{/if}
@@ -17,7 +13,7 @@
 	>
 		<form method="POST" class="w-75">
 			<div class="input-group mb-1">
-				<span class="input-group-text"><i class="bi-person-circle" /></span>
+				<span class="input-group-text text-light"><i class="bi-person-circle" /></span>
 				<div class="form-floating">
 					<input
 						type="email"
@@ -30,7 +26,7 @@
 				</div>
 			</div>
 			<div class="input-group">
-				<span class="input-group-text"><i class="bi-key" /></span>
+				<span class="input-group-text text-light"><i class="bi-key" /></span>
 				<div class="form-floating">
 					<input
 						type="password"
@@ -49,22 +45,9 @@
 	</div>
 </section>
 
-<!-- Mobile version -->
-<section class="mobile">
-	<Login {response} />
-</section>
-
 <style>
-	/* Desktop specific */
-	.desktop {
-		background-image: url('../../../lib/img/dashboard.png');
-		background-size: cover;
-		background-repeat: no-repeat;
-		opacity: 0.95;
-	}
-
 	.outer {
-		width: 30%;
+		/* width: 30%; */
 		height: 100vh;
 	}
 
@@ -75,32 +58,14 @@
 	}
 
 	.btn-login {
-		background-color: .22223b;
+		background-color: #22223b;
 	}
 
 	.btn-login:hover {
-		background-color: .22223bdf;
+		background-color: #22223bdf;
 	}
 
 	span {
-		background-color: .22223b;
-	}
-
-	.desktop {
-		display: block;
-	}
-
-	.mobile {
-		display: none;
-	}
-
-	/* Mobile specific */
-	@media screen and (max-width: 1000px) {
-		.desktop {
-			display: none;
-		}
-		.mobile {
-			display: block !important;
-		}
+		background-color: #22223b;
 	}
 </style>

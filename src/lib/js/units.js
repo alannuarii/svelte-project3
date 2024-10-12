@@ -1,10 +1,10 @@
 export const units = (field) => {
     if (field === "External Temperature" || field === "Air Temperature") {
-        return "degC"
+        return "°C"
     } else if (field === "Global Irradiance") {
         return "W/m2"
     } else if (field === "Wind Direction") {
-        return "deg"
+        return "°"
     } else if (field === "Wind Speed") {
         return "m/s"
     } else if (field === "Relative Humidity") {

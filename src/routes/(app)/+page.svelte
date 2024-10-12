@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import Pltd from '../../lib/components/PLTD.svelte';
 	import Plts from '../../lib/components/PLTS.svelte';
+	import Main from '../../lib/components/mobile/Main.svelte';
 
 	let weatherData = [];
 	let dg6Data = [];
@@ -65,21 +66,49 @@
 
 		return () => clearInterval(interval);
 	});
-
-	$: console.log(dg7Data)
 </script>
 
-<div class="container-fluid">
+<section class="desktop">
+	<div class="container-fluid">
+		{#if error}
+			<p>Error: {error}</p>
+		{:else}
+			<div class="row">
+				<div class="col-6">
+					<Pltd {dg6Data} {dg7Data} />
+				</div>
+				<div class="col-6">
+					<Plts {weatherData} {lvsw1Data} {lvsw2Data} {it1Data} {it2Data} />
+				</div>
+			</div>
+		{/if}
+	</div>
+</section>
+
+<section class="mobile">
 	{#if error}
 		<p>Error: {error}</p>
 	{:else}
-		<div class="row">
-			<div class="col-6">
-				<Pltd {dg6Data} {dg7Data} />
-			</div>
-			<div class="col-6">
-				<Plts {weatherData} {lvsw1Data} {lvsw2Data} {it1Data} {it2Data} />
-			</div>
-		</div>
+		<Main {dg6Data} {dg7Data} {lvsw1Data} {lvsw2Data} {weatherData} {it1Data} {it2Data} />
 	{/if}
-</div>
+</section>
+
+<style>
+	.desktop {
+		display: block;
+	}
+
+	.mobile {
+		display: none;
+	}
+
+	/* Mobile specific */
+	@media screen and (max-width: 1000px) {
+		.desktop {
+			display: none;
+		}
+		.mobile {
+			display: block !important;
+		}
+	}
+</style>
