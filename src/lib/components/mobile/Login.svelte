@@ -1,16 +1,23 @@
 <script>
 	import Alert from '../Alert.svelte';
+	import np from '../../img/np.png';
 
 	export let response;
 </script>
 
-<section id="desktop">
+<section class="mobile">
 	{#if response}
 		<Alert message={response} color="danger" icon="x-circle" />
 	{/if}
-	<div
-		class="outer ms-auto d-flex align-items-center justify-content-center bg-secondary-subtle opacity-75"
-	>
+
+	<div class="outer ms-auto d-flex flex-column align-items-center justify-content-center">
+		<div class="d-flex justify-content-center">
+			<img src={np} class="img-fluid mb-5" alt="" />
+		</div>
+		<div class="mb-3">
+			<h1 class="text-light">DASHBOARD</h1>
+			<h2 class="text-light">ULPLTD TAHUNA</h2>
+		</div>
 		<form method="POST" class="w-75">
 			<div class="input-group mb-1">
 				<span class="input-group-text text-light"><i class="bi-person-circle" /></span>
@@ -42,10 +49,17 @@
 				<button class="btn btn-login w-50 text-light" type="submit">Login</button>
 			</div>
 		</form>
+		<p class="mt-5 author text-light">Created by: <span>Alan Nuari</span></p>
 	</div>
 </section>
 
 <style>
+	.mobile {
+		background-image: url('../../img/bg.jpg');
+		background-size: cover;
+		background-repeat: no-repeat;
+		opacity: 0.95;
+	}
 	.outer {
 		/* width: 30%; */
 		height: 100vh;
@@ -67,5 +81,25 @@
 
 	span {
 		background-color: #22223b;
+	}
+	img {
+		height: 40px;
+	}
+	h1 {
+		font-weight: 900;
+		font-size: 32px;
+		margin: 0px;
+	}
+	h2 {
+		font-weight: 900;
+		margin: 0px;
+	}
+	.author {
+		margin-top: 300px !important;
+        font-size: 13px;
+	}
+	.author span {
+		font-weight: 700;
+		background-color: transparent;
 	}
 </style>

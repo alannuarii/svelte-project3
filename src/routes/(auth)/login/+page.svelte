@@ -75,15 +75,15 @@
 	}
 
 	.btn-login {
-		background-color: .22223b;
+		background-color: 0.22223b;
 	}
 
 	.btn-login:hover {
-		background-color: .22223bdf;
+		background-color: 0.22223bdf;
 	}
 
 	span {
-		background-color: .22223b;
+		background-color: 0.22223b;
 	}
 
 	.desktop {

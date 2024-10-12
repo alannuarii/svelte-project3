@@ -6,7 +6,7 @@
 </script>
 
 <section class="my-2">
-	<div class="card py-2 rounded-5 shadow border-dark border-5">
+	<div class="card pt-2 rounded-5 shadow border-dark border-5">
 		<h1 class="text-center">PLTD Tahuna</h1>
 		<div>
 			<div class="row gx-2 mx-2">

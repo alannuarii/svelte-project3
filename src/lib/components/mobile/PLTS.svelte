@@ -62,11 +62,11 @@
 	}
 
 	$: if (isDataAvailable(it2Data)) {
-		it1 = it2Data[0]._value;
+		it2 = it2Data[0]._value;
 	}
 </script>
 
-<section class="my-2">
+<section class="mt-2">
 	<div class="card py-2 rounded-5 shadow border-dark border-5">
 		<h1 class="text-center">PLTS Sangihe</h1>
 		<div class="mx-auto mb-2">
@@ -118,7 +118,7 @@
 			<div>
 				<WeatherStation {airTemp} {exTemp} {humidity} {windDirect} {windSpeed} />
 			</div>
-			<div class="text-center mb-2">
+			<div class="text-center">
 				<a href="/">Detail <i class="bi-arrow-right-circle"></i></a>
 			</div>
 		</div>
