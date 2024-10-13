@@ -51,7 +51,10 @@
 		<p class="text-center">DMN 850 kW</p>
 	</div>
 	<div class="text-center mb-2">
-		<a href="/">Detail <i class="bi-arrow-right-circle"></i></a>
+		<div class="text-center">
+            <a href="/detail/pltd">Detail <i class="bi-arrow-right-circle"></i></a>
+        </div>
+		
 	</div>
 </div>
 

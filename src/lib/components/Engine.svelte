@@ -76,6 +76,10 @@
 </div>
 
 <style>
+	h4 {
+		font-size: 15px;
+		margin: 0;
+	}
 	h2 {
 		font-size: 20px;
 		font-weight: 700;
@@ -103,5 +107,14 @@
 	}
 	a:hover {
 		color: #0d6efd;
+	}
+
+	@media (max-width: 576px) {
+		.card-header,
+		h6,
+		.unit2,
+		.unit {
+			font-size: 3vw;
+		}
 	}
 </style>

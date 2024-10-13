@@ -119,7 +119,7 @@
 				<WeatherStation {airTemp} {exTemp} {humidity} {windDirect} {windSpeed} />
 			</div>
 			<div class="text-center">
-				<a href="/">Detail <i class="bi-arrow-right-circle"></i></a>
+				<a href="/detail/plts">Detail <i class="bi-arrow-right-circle"></i></a>
 			</div>
 		</div>
 	</div>

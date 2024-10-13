@@ -15,8 +15,9 @@
 					{#if ![1, 2, 3].includes(i)}
 						<li class="list-group-item d-flex flex-column">
 							<div class="title d-flex justify-content-center align-items-center">
-								<a href="/chart/{item._measurement}-{item._field}" class="title d-flex align-items-center text-dark"
-									>{item._field}</a
+								<a
+									href="/chart/{item._measurement}-{item._field}"
+									class="title d-flex align-items-center text-dark">{item._field}</a
 								>
 							</div>
 							<hr />
@@ -35,6 +36,10 @@
 {/if}
 
 <style>
+	h4 {
+		font-size: 15px;
+		margin: 0;
+	}
 	h5 {
 		margin: 0;
 		font-size: 13px;
@@ -45,10 +50,6 @@
 	.title {
 		height: 25px;
 	}
-	/* .title h5 {
-		font-size: 13px;
-		margin-bottom: -7px;
-	} */
 	.value {
 		margin-top: -10px;
 	}
@@ -61,5 +62,16 @@
 	}
 	a:hover {
 		color: #0d6efd !important;
+	}
+
+	@media (max-width: 576px) {
+		h5,
+		.unit2,
+		a {
+			font-size: 3vw;
+		}
+		.title {
+			height: 1px;
+		}
 	}
 </style>

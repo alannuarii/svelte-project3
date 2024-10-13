@@ -7,11 +7,12 @@
 </script>
 
 {#if isDataAvailable(weatherData)}
-	<div class="row mx-3 py-2 ws card border-dark">
+	<div class="mx-3 py-2 ws card border-dark">
 		<h4 class="text-center mb-2">Weather Station</h4>
-		<div class="d-flex justify-content-center align-items-center">
+		<div class="row gx-0 mx-3 mx-lg-2">
 			{#each weatherData as item}
-				<div class="col-2">
+				<div class="col-4 col-lg-2 mb-3">
+					<!-- Menggunakan col-6 untuk layar kecil, col-lg-2 untuk layar besar -->
 					<div class="card mx-1 border-dark">
 						<a
 							href="/chart/{item._measurement}-{item._field}"
@@ -61,5 +62,13 @@
 	}
 	a:hover {
 		color: #0d6efd;
+	}
+
+	@media (max-width: 576px) {
+		h5,
+		.unit,
+		a {
+			font-size: 3vw;
+		}
 	}
 </style>

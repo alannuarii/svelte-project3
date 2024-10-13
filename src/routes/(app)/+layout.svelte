@@ -4,22 +4,23 @@
 	import { onMount } from 'svelte';
 	import LogOut from '../../lib/components/mobile/LogOut.svelte';
 
-	let freqData = [];
+	let lvsw1Data = [];
 
 	const fetchData = async () => {
 		try {
-			const freqRes = await fetch('/api/lvsw1');
+			// Fetch data from both APIs
+			const lvsw1Res = await fetch('/api/lvsw1');
 
 			// Check if both requests are primaryful
-			if (!freqRes.ok) {
+			if (!lvsw1Res.ok) {
 				throw new Error('Failed to fetch data');
 			}
 
 			// Parse both JSON responses
-			const freq = await freqRes.json();
+			const lvsw1 = await lvsw1Res.json();
 
-			// Update the weatherData and freqData arrays
-			freqData = freq;
+			// Update the weatherData and dg7Data arrays
+			lvsw1Data = lvsw1;
 		} catch (err) {
 			error = err.message;
 		}
@@ -42,7 +43,7 @@
 <main class="desktop">
 	<div class="position-relative">
 		<div class="header position-absolute top-0 start-50 translate-middle-x">
-			<Header {freqData} />
+			<Header freqData={lvsw1Data} />
 		</div>
 		<div class="content px-5">
 			<slot />
