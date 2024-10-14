@@ -42,7 +42,7 @@
 					{#each dgData as item, i}
 						{#if ![0, 1, 2, 3, 4, 8, 9].includes(i)}
 							<li class="list-group-item d-flex justify-content-center align-items-center">
-								<h6 class="card-title me-2">{item._value.toFixed(2)}</h6>
+								<h6 class="card-title me-2">{item._value.toFixed(0)}</h6>
 								<span class="unit2">{units(item._field)}</span>
 							</li>
 						{/if}
@@ -62,7 +62,7 @@
 					{#each dgData as item, i}
 						{#if ![0, 5, 6, 7, 4, 8, 9].includes(i)}
 							<li class="list-group-item d-flex justify-content-center align-items-center">
-								<h6 class="card-title me-2">{item._value.toFixed(2)}</h6>
+								<h6 class="card-title me-2">{item._value.toFixed(0)}</h6>
 								<span class="unit2">{units(item._field)}</span>
 							</li>
 						{/if}
