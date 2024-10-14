@@ -73,7 +73,7 @@
 		{#if error}
 			<p>Error: {error}</p>
 		{:else}
-			<div class="row">
+			<div class="row gx-3">
 				<div class="col-6">
 					<Pltd {dg6Data} {dg7Data} />
 				</div>
