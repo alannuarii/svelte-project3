@@ -45,7 +45,7 @@
 		<div class="header position-absolute top-0 start-50 translate-middle-x">
 			<Header freqData={lvsw1Data} />
 		</div>
-		<div class="content px-5">
+		<div class="content px-0">
 			<slot />
 		</div>
 	</div>
