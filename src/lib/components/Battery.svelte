@@ -22,7 +22,11 @@
 							</div>
 							<hr />
 							<div class="value d-flex justify-content-center align-items-center">
+								{#if item._field === 'Active Power'}
+								<h5 class="card-title me-2">{(item._value * 100)?.toFixed(2)}</h5>
+								{:else}
 								<h5 class="card-title me-2">{item._value?.toFixed(2)}</h5>
+								{/if}
 								<span class="unit2">{units(item._field)}</span>
 							</div>
 						</li>
@@ -36,7 +40,7 @@
 					<div class="value d-flex justify-content-center align-items-center">
 						{#if itData[0]?._value > 0}
 							<h5 class="card-title me-2 text-danger status">Discharging</h5>
-						{:else if itData[0]?._value < 0}
+						{:else if itData[0]?._value <= -1}
 							<h5 class="card-title me-2 text-primary status">Charging</h5>
 						{:else}
 							<h5 class="card-title me-2">-</h5>

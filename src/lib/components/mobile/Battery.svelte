@@ -6,7 +6,7 @@
 <div class="row mt-3 gx-3 px-5">
 	<div class="col-6">
 		<h2 class="text-center mb-2">BSS Feeder #1</h2>
-		<h3 class="text-center batval">{it1} kW</h3>
+		<h3 class="text-center batval">{it1 * 100} kW</h3>
 		<hr />
 		<h3 class="text-center status">
 			{#if it1 > 0}
@@ -20,7 +20,7 @@
 	</div>
 	<div class="col-6">
 		<h2 class="text-center mb-2">BSS Feeder #2</h2>
-		<h3 class="text-center batval">{it2} kW</h3>
+		<h3 class="text-center batval">{it2 * 100} kW</h3>
 		<hr />
 		<h3 class="text-center status">
 			{#if it2 > 0}
