@@ -25,7 +25,7 @@
 		<h3 class="text-center status">
 			{#if it2 > 0}
 				<h3 class="card-title me-2 text-danger status">Discharging</h3>
-			{:else if it2 < 0}
+			{:else if it2 <= -1}
 				<h3 class="card-title me-2 text-primary status">Charging</h3>
 			{:else}
 				<h3 class="card-title me-2">-</h3>
